@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.AuthentificationViewController">
+   <children>
+      <Label layoutX="156.0" layoutY="27.0" prefHeight="69.0" prefWidth="189.0" text="TechEvent" textFill="#006aff">
+         <font>
+            <Font name="Vani" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="111.0" prefHeight="33.0" prefWidth="126.0" text="Nom Utilisateur" textFill="#006aff">
+         <font>
+            <Font name="Vani Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="157.0" text="Mot de passe" textFill="#006aff">
+         <font>
+            <Font name="Vani Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userNameTextField" layoutX="188.0" layoutY="115.0" prefHeight="25.0" prefWidth="250.0" />
+      <PasswordField fx:id="passwordPasswordField" layoutX="188.0" layoutY="161.0" prefHeight="25.0" prefWidth="250.0" />
+      <Hyperlink fx:id="SignUpHyperLink" layoutX="411.0" layoutY="14.0" onAction="#SignUpAction" text="S'inscrire" textAlignment="CENTER" textFill="#006aff" underline="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Hyperlink>
+      <Button fx:id="SignInButton" layoutX="176.0" layoutY="212.0" mnemonicParsing="false" onAction="#SignInAction" prefHeight="48.0" prefWidth="149.0" text="S'authentifier" textFill="#006aff">
+         <font>
+            <Font name="Vani" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

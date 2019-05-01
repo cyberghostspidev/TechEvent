@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" cache="true" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.Administrateur.MenuTabPaneViewController">
+   <children>
+      <TabPane fx:id="menuTabPane" layoutX="-2.0" layoutY="-2.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Tableau de bord" />
+          <Tab text="Evénements" />
+          <Tab text="Utilisateurs" />
+            <Tab text="Paramètres" />
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
