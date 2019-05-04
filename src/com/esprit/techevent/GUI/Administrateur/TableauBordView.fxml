@@ -1,11 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.Administrateur.TableauBordViewController">
    <children>
-      <Label layoutX="257.0" layoutY="192.0" text="Tableau de Bord" />
+      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="572.0" prefWidth="772.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <SplitPane dividerPositions="0.25396825396825395, 0.5026455026455027, 0.7513227513227513" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Evénements : ">
+                           <font>
+                              <Font name="Vani Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="nbTotalEvenementsLabel" layoutX="14.0" layoutY="12.0" text="Nombre total d'événements : " />
+                     </children></AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label fx:id="maxCategorieLabel" layoutX="14.0" layoutY="12.0" text="Catégorie dominante : " />
+                     </children></AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="minCategorieLabel" layoutX="16.0" layoutY="11.0" text="Catégorie Ignorée : " />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="384.0" GridPane.columnIndex="1">
+               <children>
+                  <PieChart fx:id="evenementsGroupesPieChart" layoutX="12.0" layoutY="11.0" prefHeight="169.0" prefWidth="362.0" title="Evénements par catégories : ">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </PieChart>
+               </children>
+            </AnchorPane>
+            <SplitPane dividerPositions="0.25396825396825395, 0.5026455026455027, 0.7513227513227513" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="1">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Participations et Intérêts : ">
+                           <font>
+                              <Font name="Vani Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="nbTotalParticipantsLabel" layoutX="14.0" layoutY="12.0" text="Nombre total des participants : " />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label fx:id="maxInteretLabel" layoutX="14.0" layoutY="12.0" text="Catégorie la plus intéressante : " />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="minInteretLabel" layoutX="14.0" layoutY="14.0" text="Catégorie la moins intéressante : " />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.25396825396825395, 0.5026455026455027, 0.7513227513227513" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="2">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" text="Organisations et domaines : ">
+                           <font>
+                              <Font name="Vani Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="nbTotalOrganisateursLabel" layoutX="14.0" layoutY="12.0" text="Nombre total des organisateurs : " />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0">
+                     <children>
+                        <Label fx:id="maxDomaineLabel" layoutX="14.0" layoutY="12.0" text="Catégorie la plus organisée : " />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50" prefWidth="160">
+                     <children>
+                        <Label fx:id="minDomaineLabel" layoutX="14.0" layoutY="14.0" text="Catégorie la moins organisée : " />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="384.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <PieChart fx:id="participantsGroupesPieChart" layoutX="12.0" layoutY="11.0" prefHeight="169.0" prefWidth="362.0" title="Intérêts participants par catégories : ">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </PieChart>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="384.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <PieChart fx:id="organisateursGroupesPieChart" layoutX="12.0" layoutY="11.0" prefHeight="169.0" prefWidth="362.0" title="Domaines organisateurs par catégories : ">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </PieChart>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

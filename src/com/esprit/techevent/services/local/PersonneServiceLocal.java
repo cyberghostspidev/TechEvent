@@ -5,14 +5,16 @@
  */
 package com.esprit.techevent.services.local;
 
+import com.esprit.techevent.DTO.PersonneInteretDTO;
 import com.esprit.techevent.entities.Personne;
+import java.util.List;
 
 /**
  *
  * @author Yacine Ben Ouirane
  */
 public interface PersonneServiceLocal {
-    
+
     //Default Service
     public boolean ajouterPersonne(Personne personne);
 
@@ -25,4 +27,11 @@ public interface PersonneServiceLocal {
     public int compterPersonne();
 
     //Added Service
+    public Personne chercherPersonneParIdUtilisateur(int idUtilisateur);
+
+    public List<PersonneInteretDTO> compterPersonnesParInterets();
+
+    public PersonneInteretDTO chercherCategoriePlusInteressee();
+
+    public PersonneInteretDTO chercherCategorieMoinsInteressee();
 }

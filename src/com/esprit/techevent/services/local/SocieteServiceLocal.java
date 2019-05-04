@@ -5,7 +5,9 @@
  */
 package com.esprit.techevent.services.local;
 
+import com.esprit.techevent.DTO.SocieteDomaineDTO;
 import com.esprit.techevent.entities.Societe;
+import java.util.List;
 
 /**
  *
@@ -22,7 +24,14 @@ public interface SocieteServiceLocal {
 
     public Societe chercherSociete(int idSociete);
 
+    public Societe chercherSocieteParIdUtilisateur(int idUtilisateur);
+
     public int compterSociete();
 
     //Added Service
+    public List<SocieteDomaineDTO> compterSocieteParDomaine();
+
+    public SocieteDomaineDTO chercherCategoriePlusOrganisee();
+
+    public SocieteDomaineDTO chercherCategorieMoinsOrganisee();
 }

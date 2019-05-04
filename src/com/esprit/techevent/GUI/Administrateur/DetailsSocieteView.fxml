@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.Administrateur.DetailsSocieteViewController">
+   <children>
+      <Label layoutX="27.0" layoutY="109.0" text="Raison Sociale : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="144.0" text="Adresse : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="179.0" text="Numéro Telephone :  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleLabel" layoutX="12.0" layoutY="35.0" prefHeight="35.0" prefWidth="377.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="raisonSocialeLabel" layoutX="211.0" layoutY="111.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label fx:id="adresseLabel" layoutX="211.0" layoutY="146.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label fx:id="numTelLabel" layoutX="211.0" layoutY="181.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label layoutX="25.0" layoutY="212.0" text="Domaine :  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="domaineLabel" layoutX="211.0" layoutY="214.0" prefHeight="17.0" prefWidth="175.0" />
+   </children>
+</AnchorPane>

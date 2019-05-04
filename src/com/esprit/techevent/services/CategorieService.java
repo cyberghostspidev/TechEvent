@@ -99,7 +99,11 @@ public class CategorieService implements CategorieServiceLocal {
         try {
             String query = "SELECT COUNT(*) FROM categorie";
             st = cnx.prepareStatement(query);
-            return st.executeQuery().getInt(1);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return 0;

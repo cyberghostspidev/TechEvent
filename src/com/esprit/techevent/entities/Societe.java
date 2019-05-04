@@ -14,21 +14,28 @@ public class Societe {
     private int idSociete;
     private String raisonSociale;
     private String adresse;
+    private String logo;
     private String numTel;
-    
+    private int idUtilisateur;
+
     public Societe() {
     }
 
-    public Societe(String raisonSociale, String adresse, String numTel) {
+    public Societe(String raisonSociale, String adresse, String logo, String numTel, int idUtilisateur) {
         this.raisonSociale = raisonSociale;
         this.adresse = adresse;
+        this.logo = logo;
+        this.numTel = numTel;
+        this.idUtilisateur = idUtilisateur;
     }
 
-    public Societe(int idSociete, String raisonSociale, String adresse, String numTel) {
+    public Societe(int idSociete, String raisonSociale, String adresse, String logo, String numTel, int idUtilisateur) {
         this.idSociete = idSociete;
         this.raisonSociale = raisonSociale;
         this.adresse = adresse;
-        this.numTel = this.numTel;
+        this.logo = logo;
+        this.numTel = numTel;
+        this.idUtilisateur = idUtilisateur;
     }
 
     public int getIdSociete() {
@@ -55,6 +62,14 @@ public class Societe {
         this.adresse = adresse;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     public String getNumTel() {
         return numTel;
     }
@@ -63,4 +78,11 @@ public class Societe {
         this.numTel = numTel;
     }
 
+    public int getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.Administrateur.DetailsPersonneViewController">
+   <children>
+      <Label layoutX="27.0" layoutY="97.0" text="Nom : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="132.0" text="Prénom : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="167.0" text="Age : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="200.0" text="Profession : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="233.0" text="Intérêt(s) : ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleLabel" layoutX="12.0" layoutY="23.0" prefHeight="35.0" prefWidth="377.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomLabel" layoutX="135.0" layoutY="99.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label fx:id="prenomLabel" layoutX="135.0" layoutY="134.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label fx:id="ageLabel" layoutX="135.0" layoutY="169.0" prefHeight="17.0" prefWidth="175.0" />
+      <Label fx:id="professionLabel" layoutX="135.0" layoutY="202.0" prefHeight="17.0" prefWidth="175.0" />
+      <ListView fx:id="interetListView" layoutX="19.0" layoutY="262.0" prefHeight="124.0" prefWidth="363.0" />
+   </children>
+</AnchorPane>

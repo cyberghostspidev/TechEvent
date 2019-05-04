@@ -20,7 +20,6 @@ import com.esprit.techevent.services.local.ProfilUtilisateurServiceLocal;
 import com.esprit.techevent.services.local.UtilisateurServiceLocal;
 import com.esprit.techevent.utils.ConnectedUser;
 import com.esprit.techevent.utils.PrincipalStage;
-import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -41,9 +40,9 @@ public class AuthentificationViewController implements Initializable {
     @FXML
     private PasswordField passwordPasswordField;
 
-    UtilisateurServiceLocal utilisateurServiceLocal;
-    ProfilServiceLocal profilServiceLocal;
-    ProfilUtilisateurServiceLocal profilUtilisateurServiceLocal;
+    private UtilisateurServiceLocal utilisateurServiceLocal;
+    private ProfilServiceLocal profilServiceLocal;
+    private ProfilUtilisateurServiceLocal profilUtilisateurServiceLocal;
 
     /**
      * Initializes the controller class.
@@ -79,20 +78,9 @@ public class AuthentificationViewController implements Initializable {
         Profil profil = profilServiceLocal.chercherProfil(profilUtilisateur.getIdProfil());
         if (utilisateur != null) {
             try {
-                switch (profil.getCode()) {
-                    case "ADMIN":
-                        ConnectedUser.getInstance().setUtilisateur(utilisateur);
-                        PrincipalStage.getInstance().getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("Administrateur/MenuTabPaneView.fxml"))));
-                        break;
-                    case "PARTICIPANT":
-                        ConnectedUser.getInstance().setUtilisateur(utilisateur);
-                        PrincipalStage.getInstance().getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("Participant/MenuTabPaneView.fxml"))));
-                        break;
-                    case "ORGANISATEUR":
-                        ConnectedUser.getInstance().setUtilisateur(utilisateur);
-                        PrincipalStage.getInstance().getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("Organisateur/MenuTabPaneView.fxml"))));
-                        break;
-                }
+                ConnectedUser.getInstance().setUtilisateur(utilisateur);
+                ConnectedUser.getInstance().setProfil(profil);
+                PrincipalStage.getInstance().getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("GeneralGridPaneView.fxml"))));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

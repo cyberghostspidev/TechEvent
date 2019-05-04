@@ -5,6 +5,7 @@
  */
 package com.esprit.techevent;
 
+import com.esprit.techevent.utils.PopupStage;
 import com.esprit.techevent.utils.PrincipalStage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -25,6 +26,7 @@ public class main extends Application {
     public void start(Stage primaryStage) {
         try {
             PrincipalStage.getInstance().setStage(primaryStage);
+            PopupStage.getInstance().setStage(new Stage());
             Parent root = FXMLLoader.load(getClass().getResource("GUI/AuthentificationView.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Authentification");

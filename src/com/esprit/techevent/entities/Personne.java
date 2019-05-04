@@ -16,26 +16,26 @@ public class Personne {
     private String prenom;
     private int age;
     private String profession;
-    private int idCategorie;
+    private int idUtilisateur;
 
     public Personne() {
     }
 
-    public Personne(String nom, String prenom, int age, String profession, int idCategorie) {
+    public Personne(String nom, String prenom, int age, String profession, int idUtilisateur) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.profession = profession;
-        this.idCategorie = idCategorie;
+        this.idUtilisateur = idUtilisateur;
     }
 
-    public Personne(int idPersonne, String nom, String prenom, int age, String profession, int idCategorie) {
+    public Personne(int idPersonne, String nom, String prenom, int age, String profession, int idUtilisateur) {
         this.idPersonne = idPersonne;
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.profession = profession;
-        this.idCategorie = idCategorie;
+        this.idUtilisateur = idUtilisateur;
     }
 
     public int getIdPersonne() {
@@ -78,12 +78,11 @@ public class Personne {
         this.profession = profession;
     }
 
-    public int getIdCategorie() {
-        return idCategorie;
+    public int getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setIdCategorie(int idCategorie) {
-        this.idCategorie = idCategorie;
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
-
 }

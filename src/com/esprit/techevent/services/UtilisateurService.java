@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -32,17 +34,15 @@ public class UtilisateurService implements UtilisateurServiceLocal {
         try {
             String query = "INSERT INTO utilisateur "
                     + "VALUES "
-                    + "(?,?,?,?,?,?,?,?,?)";
+                    + "(?,?,?,?,?,?,?)";
             st = cnx.prepareStatement(query);
             st.setInt(1, utilisateur.getIdUtilisateur());
-            st.setString(2, utilisateur.getUsername());
-            st.setString(3, utilisateur.getPassword());
-            st.setString(4, utilisateur.getEmail());
+            st.setString(2, utilisateur.getEmail());
+            st.setString(3, utilisateur.getUsername());
+            st.setString(4, utilisateur.getPassword());
             st.setDate(5, utilisateur.getDateInscription());
             st.setDate(6, utilisateur.getDateExpiration());
             st.setString(7, utilisateur.getType());
-            st.setInt(8, utilisateur.getIdPersonne());
-            st.setInt(9, utilisateur.getIdSociete());
             return st.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -67,14 +67,12 @@ public class UtilisateurService implements UtilisateurServiceLocal {
     public boolean modifierUtilisateur(Utilisateur utilisateur) {
         try {
             String query = "UPDATE utilisateur SET "
+                    + "email = ?, "
                     + "username = ?, "
                     + "password = ?, "
-                    + "email = ?, "
                     + "dateInscription = ?, "
                     + "dateExpiration = ?, "
-                    + "type = ?, "
-                    + "idPersonne = ?, "
-                    + "idSociete = ?, "
+                    + "type = ? "
                     + "WHERE idUtilisateur = ?";
             st = cnx.prepareStatement(query);
             st.setString(1, utilisateur.getUsername());
@@ -83,9 +81,7 @@ public class UtilisateurService implements UtilisateurServiceLocal {
             st.setString(4, utilisateur.getEmail());
             st.setDate(5, utilisateur.getDateExpiration());
             st.setString(6, utilisateur.getType());
-            st.setInt(7, utilisateur.getIdPersonne());
-            st.setInt(8, utilisateur.getIdSociete());
-            st.setInt(9, utilisateur.getIdUtilisateur());
+            st.setInt(7, utilisateur.getIdUtilisateur());
             return st.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -107,9 +103,7 @@ public class UtilisateurService implements UtilisateurServiceLocal {
                         rs.getString(4),
                         rs.getDate(5),
                         rs.getDate(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9)
+                        rs.getString(7)
                 );
             }
             return null;
@@ -146,9 +140,7 @@ public class UtilisateurService implements UtilisateurServiceLocal {
                         rs.getString(4),
                         rs.getDate(5),
                         rs.getDate(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9)
+                        rs.getString(7)
                 );
             }
             return null;
@@ -158,4 +150,81 @@ public class UtilisateurService implements UtilisateurServiceLocal {
         }
     }
 
+    @Override
+    public List<Utilisateur> chercherTousUtilisateurs() {
+        try {
+            String query = "SELECT * FROM utilisateur";
+            st = cnx.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            List<Utilisateur> utilisateurs = new ArrayList<>();
+            while (rs.next()) {
+                utilisateurs.add(
+                        new Utilisateur(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getDate(5),
+                                rs.getDate(6),
+                                rs.getString(7)
+                        )
+                );
+            }
+            return utilisateurs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Utilisateur> chercherTousPersonnes() {
+        try {
+            String query = "SELECT * FROM utilisateur WHERE type = 'Personne'";
+            st = cnx.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            List<Utilisateur> utilisateurs = new ArrayList<>();
+            while (rs.next()) {
+                utilisateurs.add(
+                        new Utilisateur(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getDate(5),
+                                rs.getDate(6),
+                                rs.getString(7)
+                        )
+                );
+            }
+            return utilisateurs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Utilisateur> chercherTousSocietes() {
+        try {
+            String query = "SELECT * FROM utilisateur WHERE type = 'Société'";
+            st = cnx.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            List<Utilisateur> utilisateurs = new ArrayList<>();
+            while (rs.next()) {
+                utilisateurs.add(
+                        new Utilisateur(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getDate(5),
+                                rs.getDate(6),
+                                rs.getString(7)
+                        )
+                );
+            }
+            return utilisateurs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

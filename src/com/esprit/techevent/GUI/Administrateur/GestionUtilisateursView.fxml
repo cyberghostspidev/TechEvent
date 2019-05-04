@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.techevent.GUI.Administrateur.GestionUtilisateursViewController">
    <children>
-      <Label layoutX="272.0" layoutY="183.0" text="Utilisateurs" />
+      <TableView fx:id="utilisateursTableView" layoutY="50.0" prefHeight="550.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="checkTableColumn" prefWidth="28.0" />
+            <TableColumn fx:id="idTableColumn" editable="false" prefWidth="36.0" text="#" />
+          <TableColumn fx:id="mailTableColumn" editable="false" prefWidth="150.0" text="E-Mail" />
+            <TableColumn fx:id="usernameTableColumn" editable="false" prefWidth="114.0" text="Nom Utilisateur" />
+            <TableColumn fx:id="passwordTableColumn" editable="false" prefWidth="114.0" text="Mot de Passe" />
+            <TableColumn fx:id="dateCreationTableColumn" editable="false" prefWidth="99.0" text="Date Creation" />
+            <TableColumn fx:id="dateExpirationTableColumn" minWidth="0.0" prefWidth="98.0" text="Date Expiration" />
+            <TableColumn fx:id="typeTableColumn" minWidth="0.0" prefWidth="88.0" text="Type" />
+            <TableColumn fx:id="actionTableColumn" prefWidth="70.0" text="Action" />
+        </columns>
+      </TableView>
+      <Button fx:id="deleteButton" layoutX="721.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteAction" text="Supprimer" />
+      <RadioButton fx:id="tousRadioButton" layoutX="292.0" layoutY="17.0" mnemonicParsing="false" onAction="#tousAction" selected="true" text="Tous" />
+      <RadioButton fx:id="societeRadioButton" layoutX="440.0" layoutY="17.0" mnemonicParsing="false" onAction="#societeAction" text="Société" />
+      <CheckBox fx:id="expireCheckBox" layoutX="545.0" layoutY="17.0" mnemonicParsing="false" selected="true" text="Expiré" />
+      <TextField fx:id="rechercheTextField" layoutX="14.0" layoutY="14.0" onAction="#chercherAction" prefHeight="25.0" prefWidth="203.0" />
+      <Separator layoutX="260.0" layoutY="1.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="10.0" />
+      <Separator layoutX="527.0" layoutY="1.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="10.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="230.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/ImageButton/search.png" />
+         </image>
+      </ImageView>
+      <RadioButton fx:id="personneRadioButton" layoutX="354.0" layoutY="17.0" mnemonicParsing="false" onAction="#PersonneAction" text="Personne" />
+      <CheckBox fx:id="nonExpireCheckBox" layoutX="619.0" layoutY="17.0" mnemonicParsing="false" selected="true" text="Non Expiré" />
+      <Separator layoutX="711.0" layoutY="3.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="10.0" />
    </children>
 </AnchorPane>

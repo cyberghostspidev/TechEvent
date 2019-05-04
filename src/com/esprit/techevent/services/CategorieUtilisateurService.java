@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -85,6 +87,24 @@ public class CategorieUtilisateurService implements CategorieUtilisateurServiceL
         } catch (SQLException ex) {
             ex.printStackTrace();
             return 0;
+        }
+    }
+
+    @Override
+    public List<CategorieUtilisateur> chercherTousCategorieDeUtilisateur(int idUtilisateur) {
+        try {
+            String query = "SELECT * FROM categorie_utilisateur WHERE idUtilisateur = ?";
+            st = cnx.prepareStatement(query);
+            st.setInt(1, idUtilisateur);
+            ResultSet rs = st.executeQuery();
+            List<CategorieUtilisateur> categorieUtilisateurs = new ArrayList<>();
+            while (rs.next()) {
+                categorieUtilisateurs.add(new CategorieUtilisateur(rs.getInt(1), rs.getInt(2)));
+            }
+            return categorieUtilisateurs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 

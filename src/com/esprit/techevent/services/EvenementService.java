@@ -5,6 +5,7 @@
  */
 package com.esprit.techevent.services;
 
+import com.esprit.techevent.DTO.EvenementCategorieDTO;
 import com.esprit.techevent.entities.Evenement;
 import com.esprit.techevent.services.local.EvenementServiceLocal;
 import com.esprit.techevent.utils.ConnectionDataSource;
@@ -12,6 +13,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -68,7 +72,7 @@ public class EvenementService implements EvenementServiceLocal {
 
     @Override
     public boolean modifierEvenement(Evenement evenement) {
-try {
+        try {
             String query = "UPDATE evenement SET "
                     + "nom = ?, "
                     + "description = ?, "
@@ -137,12 +141,97 @@ try {
     @Override
     public int compterEvenement() {
         try {
-            String query = "SELECT COUNT(*) FROM evenement";
+            String query = "SELECT COUNT(*) AS nbEvenements FROM evenement";
             st = cnx.prepareStatement(query);
-            return st.executeQuery().getInt(1);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            return 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return 0;
         }
     }
+
+    @Override
+    public List<EvenementCategorieDTO> compterEvenementsParCategorie() {
+        try {
+            String query = "SELECT C.nom, COUNT(*) AS nbEvenements"
+                    + " FROM evenement E, Categorie C"
+                    + " WHERE E.idCategorie = C.idCategorie"
+                    + " GROUP BY C.nom"
+                    + " ORDER BY C.nom";
+            st = cnx.prepareStatement(query);
+            List<EvenementCategorieDTO> evenementCategorieDTOs = new ArrayList<>();
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                evenementCategorieDTOs.add(
+                        new EvenementCategorieDTO(rs.getRow(),
+                                rs.getString(1),
+                                rs.getInt(2)
+                        )
+                );
+            }
+            return evenementCategorieDTOs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public EvenementCategorieDTO chercherCategorieDominante() {
+        try {
+            String query = "SELECT C.nom, COUNT(*) AS nbEvenement"
+                    + " FROM evenement E, categorie C"
+                    + " WHERE E.idCategorie = C.idCategorie"
+                    + " GROUP BY C.nom"
+                    + " HAVING nbEvenement = (SELECT MAX(nbTotEvenement)"
+                    + " FROM ( SELECT COUNT(*) AS nbTotEvenement"
+                    + "	FROM evenement E, categorie C"
+                    + " WHERE E.idCategorie = C.idCategorie"
+                    + " GROUP BY C.nom) AS MaxEvenement)";
+            st = cnx.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new EvenementCategorieDTO(rs.getRow(),
+                        rs.getString(1),
+                        rs.getInt(2)
+                );
+            }
+            return null;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public EvenementCategorieDTO chercherCategorieIgnoree() {
+        try {
+            String query = "SELECT C.nom, COUNT(*) AS nbEvenement"
+                    + " FROM evenement E, categorie C"
+                    + " WHERE E.idCategorie = C.idCategorie"
+                    + " GROUP BY C.nom"
+                    + " HAVING nbEvenement = (SELECT MIN(nbTotEvenement)"
+                    + " FROM ( SELECT COUNT(*) AS nbTotEvenement"
+                    + "	FROM evenement E, categorie C"
+                    + " WHERE E.idCategorie = C.idCategorie"
+                    + " GROUP BY C.nom) AS MinEvenement)";
+            st = cnx.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new EvenementCategorieDTO(rs.getRow(),
+                        rs.getString(1),
+                        rs.getInt(2)
+                );
+            }
+            return null;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
@@ -23,6 +24,8 @@ public class MenuTabPaneViewController implements Initializable {
 
     @FXML
     private TabPane menuTabPane;
+    @FXML
+    private GridPane grilleGridPane;
 
     /**
      * Initializes the controller class.

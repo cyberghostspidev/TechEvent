@@ -5,7 +5,9 @@
  */
 package com.esprit.techevent.services.local;
 
+import com.esprit.techevent.DTO.EvenementCategorieDTO;
 import com.esprit.techevent.entities.Evenement;
+import java.util.List;
 
 /**
  *
@@ -25,4 +27,10 @@ public interface EvenementServiceLocal {
     public int compterEvenement();
 
     //Added Service
+    public List<EvenementCategorieDTO> compterEvenementsParCategorie();
+
+    public EvenementCategorieDTO chercherCategorieDominante();
+
+    public EvenementCategorieDTO chercherCategorieIgnoree();
+
 }

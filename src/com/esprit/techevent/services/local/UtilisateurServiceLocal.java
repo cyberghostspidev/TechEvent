@@ -6,6 +6,8 @@
 package com.esprit.techevent.services.local;
 
 import com.esprit.techevent.entities.Utilisateur;
+import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -23,7 +25,15 @@ public interface UtilisateurServiceLocal {
     public Utilisateur chercherUtilisateur(int idUtilisateur);
 
     public int compterUtilisateur();
-    
+
     //Added Service
-    public Utilisateur chercherUtilisateurParUsernameEtPassword(String username,String password);
+    public Utilisateur chercherUtilisateurParUsernameEtPassword(String username, String password);
+
+    public List<Utilisateur> chercherTousUtilisateurs();
+
+    public List<Utilisateur> chercherTousPersonnes();
+
+    public List<Utilisateur> chercherTousSocietes();
+
+//    public List<Utilisateur> modifierDateExpirationUtilisateur(Date dateExpiration);
 }

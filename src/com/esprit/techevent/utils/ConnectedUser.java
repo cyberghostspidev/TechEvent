@@ -5,6 +5,7 @@
  */
 package com.esprit.techevent.utils;
 
+import com.esprit.techevent.entities.Profil;
 import com.esprit.techevent.entities.Utilisateur;
 
 /**
@@ -14,6 +15,7 @@ import com.esprit.techevent.entities.Utilisateur;
 public class ConnectedUser {
 
     private Utilisateur utilisateur;
+    private Profil profil;
     private static ConnectedUser connectedUser;
 
     private ConnectedUser() {
@@ -34,5 +36,12 @@ public class ConnectedUser {
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
-    
+
+    public Profil getProfil() {
+        return profil;
+    }
+
+    public void setProfil(Profil profil) {
+        this.profil = profil;
+    }
 }

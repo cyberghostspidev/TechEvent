@@ -6,6 +6,7 @@
 package com.esprit.techevent.services.local;
 
 import com.esprit.techevent.entities.CategorieUtilisateur;
+import java.util.List;
 
 /**
  *
@@ -23,4 +24,6 @@ public interface CategorieUtilisateurServiceLocal {
     public int compterCategorieUtilisateur();
 
     //Added Service
+    public List<CategorieUtilisateur> chercherTousCategorieDeUtilisateur(int idUtilisateur);
+
 }
